@@ -39,7 +39,7 @@ AR=ar
 CFLAGS=-std=gnu99 -W -Wall -O2 -Wno-unused-parameter -g $(EXT_OPTIONS)
 _LIBWAFER_OBJ=wafer.o waferapi.o
 _LIBWAFER=libwafer.a
-MODULES=$(SERVER) example
+MODULES=$(SERVER) lightcontrol
 
 LIBWAFER_OBJ = $(patsubst %,$(OBJDIR)/%,$(_LIBWAFER_OBJ))
 LIBWAFER = $(patsubst %,$(OBJDIR)/%,$(_LIBWAFER))

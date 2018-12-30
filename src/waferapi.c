@@ -3,6 +3,8 @@
 
 #include <time.h>
 
+char *strptime(const char *s, const char *format, struct tm *tm);   /* was missing on opi for some reason */
+
 #ifdef __linux__
 #include <sys/sendfile.h>
 #endif

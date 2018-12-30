@@ -884,7 +884,8 @@ int main(void)
 
 	if (pUid != NULL) {
 		uid_t uid = (u_short) strtol(pUid, (char **)NULL, 10);
-		setuid(uid);
+		unsigned int a = setuid(uid);
+		dbgprintf("The uid is changed by setuid to %u", a);
 		if (getuid() != uid) {
 			fprintf(stderr, "Could not set UID");
 			exit(EXIT_FAILURE);
