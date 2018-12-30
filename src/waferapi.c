@@ -217,7 +217,7 @@ char *getHeader(char **headers, char *header)
 
 /**********************************************************************/
 /* Return the value of a query parameter.
- * Parameters: the query string
+ * Parameters: the request having the query string (?)
  *			   the name of the parameter
  * Returns: the value of the query parameter */
 /**********************************************************************/
@@ -290,6 +290,14 @@ char *getQueryPath(Request * request)
 
 	return queryPath;
 }
+
+/**********************************************************************/
+/* Routes the request to be handled by the given function if path equal.
+ * http://waferdotc.com/faq is /faq
+ * Note the / at the beginning
+ * Parameters: the request, response and the route path with its handler
+ * Returns: true if this route succeeded, false otherwise */
+/**********************************************************************/
 
 bool routeRequest(Request * request, Response * response, const char *path,
 				  void (*function) (Request *, Response *))
