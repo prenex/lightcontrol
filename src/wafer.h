@@ -1,7 +1,7 @@
 #ifndef WAFER_H_
 #define WAFER_H_
 
-#include <arpa/inet.h>          /* inet_ntoa */
+#include <arpa/inet.h>			/* inet_ntoa */
 #include <signal.h>
 #include <dirent.h>
 #include <errno.h>
@@ -39,7 +39,7 @@
 #define KMAG  "\x1B[35m"
 #define KCYN  "\x1B[36m"
 #define KWHT  "\x1B[37m"
-#define RESET   "\033[0m"
+#define RESET	"\033[0m"
 
 /* Define boolean */
 typedef int bool;
@@ -64,7 +64,7 @@ typedef int bool;
 #define MAX_VER_SIZE 32
 #define MAX_REQUEST_SIZE 8192
 #define MAX_EVENTS MAX_NO_FDS/2
-#define POLL_TIMEOUT 100        /* ms */
+#define POLL_TIMEOUT 100		/* ms */
 /* Define HTTP request parsing states */
 #define STATE_PRE_REQUEST 0
 #define STATE_METHOD 1
@@ -78,46 +78,46 @@ typedef int bool;
 #define STATUS_HTTP_NOT_FOUND 404
 
 typedef struct struct_request {
-    char *reqStr;
-    size_t reqStrLen;
-    char *method;
-    size_t methodLen;
-    char *ver;
-    size_t verLen;
-    char **headers;
-    size_t headersLen;
-    char *contentData;
-    size_t contentDataLen;
+	char *reqStr;
+	size_t reqStrLen;
+	char *method;
+	size_t methodLen;
+	char *ver;
+	size_t verLen;
+	char **headers;
+	size_t headersLen;
+	char *contentData;
+	size_t contentDataLen;
 } Request;
 
 typedef struct struct_response {
-    int fd;
-    char **headers;
-    int flags;
-    int apiFlags;
-    int status;
+	int fd;
+	char **headers;
+	int flags;
+	int apiFlags;
+	int status;
 } Response;
 
 typedef struct {
-    short int state;
-    char *readBuffer;
-    short readBufferIdx;
-    short readBufferLen;
-    char *method;
-    short methodIdx;
-    char *uri;
-    short uriIdx;
-    char *ver;
-    short verIdx;
-    char **headers;
-    short headersIdx;
-    short withinHeaderIdx;
-    char *contentData;
-    short contentDataIdx;
+	short int state;
+	char *readBuffer;
+	short readBufferIdx;
+	short readBufferLen;
+	char *method;
+	short methodIdx;
+	char *uri;
+	short uriIdx;
+	char *ver;
+	short verIdx;
+	char **headers;
+	short headersIdx;
+	short withinHeaderIdx;
+	char *contentData;
+	short contentDataIdx;
 } FdData;
 
-#define LISTENQ  1024           /* second argument to listen() */
-#define MAXLINE 1024            /* max length of a line */
+#define LISTENQ  1024			/* second argument to listen() */
+#define MAXLINE 1024			/* max length of a line */
 #define RIO_BUFSIZE 1024
 
 #define DEFAULT_PORT 4242
@@ -138,23 +138,23 @@ int default_port;
 
 /* select_loop stuff */
 typedef struct {
-    Request request;
-    Response response;
-    int fd;
-    FdData *fdDataList;
-    fd_set *pMaster;
+	Request request;
+	Response response;
+	int fd;
+	FdData *fdDataList;
+	fd_set *pMaster;
 } THREAD_DATA;
 
 typedef struct {
 #ifdef WAFER_MAX_CON_CONS
-    THREAD_DATA *buf;
+	THREAD_DATA *buf;
 #else
-    THREAD_DATA buf[QUEUESIZE];
+	THREAD_DATA buf[QUEUESIZE];
 #endif
-    long head, tail;
-    int full, empty;
-    pthread_mutex_t *mut;
-    pthread_cond_t *notFull, *notEmpty;
+	long head, tail;
+	int full, empty;
+	pthread_mutex_t *mut;
+	pthread_cond_t *notFull, *notEmpty;
 } queue;
 
 pthread_mutex_t *fd_mutex;
@@ -179,6 +179,6 @@ long dbgprintf(const char *format, ...);
 
 void server(Request * request, Response * response);
 
-#endif                          /* WAFER_H_ */
+#endif							/* WAFER_H_ */
 
-/* vim: set ts=4 sw=4 tw=0 noet : */
+/* vim: set ts=4 noet */

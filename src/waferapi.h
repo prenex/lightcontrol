@@ -6,15 +6,15 @@
 #define CRLF "\r\n"
 #define ATTR(key,value) STR(key) STR(=) STR(value)
 
-#define LT(tag) STR(<) STR(tag) WSPC    /*<tag */
-#define LTA(tag,attributes) LT(tag) STR(attributes) WSPC        /*<tag */
-#define GT STR(>)               /*< */
+#define LT(tag) STR(<) STR(tag) WSPC	/*<tag */
+#define LTA(tag,attributes) LT(tag) STR(attributes) WSPC		/*<tag */
+#define GT STR(>)				/*< */
 
-#define OTAG(tag) LT(tag) GT    /*<tag> */
-#define OTAGA(tag,attributes) LTA(tag,attributes) GT    /*<tag attributes> */
-#define CTAG(tag) STR(</) STR(tag) GT   /*</tag> */
+#define OTAG(tag) LT(tag) GT	/*<tag> */
+#define OTAGA(tag,attributes) LTA(tag,attributes) GT	/*<tag attributes> */
+#define CTAG(tag) STR(</) STR(tag) GT	/*</tag> */
 
-#define ESTAG(tag) LT(tag) WSPC STR(/) GT       /*<tag attributes /> */
+#define ESTAG(tag) LT(tag) WSPC STR(/) GT		/*<tag attributes /> */
 #define STAG(tag,attributes) LTA(tag,attributes) WSPC STR(/) GT /*<tag attributes /> */
 
 #define QTAG(tag,text) OTAG(tag) text CTAG(tag) /*<tag> text </tag> */
@@ -28,25 +28,25 @@
 #define QBR ESTAG(br)
 
 #define STAGPARAMQ(tag,attributes) LTA(tag,attributes) ATTR(name,STR(q)) WSPC STR(/) GT /*<tag attributes name="q" /> */
-#define QTAGAPARAMQ(tag,attributes,text) OTAGA(tag,attributes name=STR(q)) text CTAG(tag)       /*<tag attributes> text </tag> */
+#define QTAGAPARAMQ(tag,attributes,text) OTAGA(tag,attributes name=STR(q)) text CTAG(tag)		/*<tag attributes> text </tag> */
 /* End ENTL */
 
 long resPrintf(Response * response, const char *format, ...);
 void serveFile(Request * request, Response * response, const char *filename,
-               const char *displayFilename, const char *type);
+			   const char *displayFilename, const char *type);
 
 void sendStatusOKHeadersTypeEncoding(Response * response, const char *type,
-                                     const char *encoding);
+									 const char *encoding);
 void sendResourceNotFound(Response * response);
 
 char *resQuickForm(Request * request, Response * response, const char *msg,
-                   const char *inputstr);
+				   const char *inputstr);
 #define QUICK_FORM_TEXT(request,response,msg) resQuickForm(request,response,msg,STAGPARAMQ(input,type="text"))
 
 char *getQueryParam(Request * request, const char *name);
 char *getQueryPath(Request * request);
 bool routeRequest(Request * request, Response * response, const char *path,
-                  void (*function) (Request *, Response *));
+				  void (*function) (Request *, Response *));
 long resPuts(Response * response, const char *buffer);
 /*Internal stuff follows. Could change in future. Do not use */
 #define STATIC_SEND(_socket, _str) send(_socket, _str, sizeof(_str)-1, 0)
@@ -55,4 +55,4 @@ long resPuts(Response * response, const char *buffer);
 #define API_FLAGS_FORM_ONLY_ON_NULL API_FLAGS_DONT_SET_HEADER_BEFORE_SENDING*2
 #endif
 
-/* vim: set ts=4 sw=4 tw=0 noet : */
+/* vim: set ts=4 noet */
