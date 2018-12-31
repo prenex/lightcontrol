@@ -1,11 +1,28 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <title>Lightcontrol</title>
 <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <h1 class="main_title">Lightcontrol - dashboard</h1>
-TODO: put the menu here
+
+<!-- This grid is filled-in by Javacript AJAX -> REST calls -->
+<div class="categories griddiv">
+	<!-- When programmatically filled, the
+	     first will be copied instead of
+	     "templating html" on the server side. -->
+	<div class="categories gridcell" id="1"><img src="video_player.png" /><p>Video</p></div>
+	<div class="categories gridcell" id="2"><img src="download_cloud_computing.png" /><p>Torrent</p></div>
+	<div class="categories gridcell" id="3"><img src="game_controller.png" /><p>Games</p></div>
+	<div class="categories gridcell" id="4"><img src="joystick.png" /><p>Controller</p></div>
+	<div class="categories gridcell" id="5"><img src="info.png" /><p>Information</p></div>
+	<div class="categories gridcell" id="5">...loading...</div>
+</div>
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
 </body>
 </html>
