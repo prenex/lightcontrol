@@ -30,7 +30,7 @@ ifdef MAX_CON_CONS
 endif
 
 ifndef CC
-	CC=gcc
+	CC=g++
 endif
 
 EXT_OPTIONS=$(PTHREAD) $(DEBUG_OPT) $(PROCESSES_OPT) $(LOOP_OPT) $(MAX_CON_CONS_OPT) 
