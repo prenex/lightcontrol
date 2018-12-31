@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "json.h"
+using json = nlohmann::json;
 
 /* Pages */
 static void index_html(Request *request, Response *response);
@@ -84,7 +85,24 @@ static void main_css(Request *request, Response *response) {
 /* ------------- */
 
 static void categories(Request *request, Response *response) {
-	
+	json ret = {
+		{"pi", 3.141},
+		{"happy", true},
+		{"name", "Niels"},
+		{"nothing", nullptr},
+		{"answer", {
+			{"everything", 42}
+		}},
+		{"list",
+			 {1, 0, 2}
+		},
+		{"object", {
+			{"currency", "USD"},
+			{"value", 42.99}
+		}}
+	};
+
+	resPrintf(response, "%s", ret.dump().c_str());
 }
 
 static void factor(Request *request, Response *response) {

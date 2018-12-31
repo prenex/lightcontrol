@@ -36,7 +36,7 @@ endif
 EXT_OPTIONS=$(PTHREAD) $(DEBUG_OPT) $(PROCESSES_OPT) $(LOOP_OPT) $(MAX_CON_CONS_OPT) 
 
 AR=ar
-CFLAGS=-std=c++11 -W -Wall -O2 -Wno-unused-parameter -g $(EXT_OPTIONS)
+CFLAGS=-std=c++14 -W -Wall -O2 -Wno-unused-parameter -g $(EXT_OPTIONS)
 _LIBWAFER_OBJ=wafer.o waferapi.o
 _LIBWAFER=libwafer.a
 MODULES=$(SERVER) lightcontrol
