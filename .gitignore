@@ -1,3 +1,7 @@
+# Resulting binary
+# TODO: Change this if you copy the gitignore!
+lightcontrol
+
 # vim
 *.swp
 
