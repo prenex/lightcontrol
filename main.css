@@ -36,6 +36,10 @@ h1.main_title {
 	background-color: rgb(41, 41, 67);
 }
 
+.gridcell:active {
+	background-color: rgb(61, 61, 87);
+}
+
 .centered {
 	text-align: center;
 }
