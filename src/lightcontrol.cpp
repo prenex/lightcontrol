@@ -2,8 +2,8 @@
 #include "waferapi.h"
 #include <string.h>
 
-#include "json.h"
-using json = nlohmann::json;
+#include "json11.h"
+using json11::Json;
 
 /* Pages */
 static void index_html(Request *request, Response *response);
@@ -85,24 +85,14 @@ static void main_css(Request *request, Response *response) {
 /* ------------- */
 
 static void categories(Request *request, Response *response) {
-	json ret = {
-		{"pi", 3.141},
-		{"happy", true},
-		{"name", "Niels"},
-		{"nothing", nullptr},
-		{"answer", {
-			{"everything", 42}
-		}},
-		{"list",
-			 {1, 0, 2}
-		},
-		{"object", {
-			{"currency", "USD"},
-			{"value", 42.99}
-		}}
+	Json my_json = Json::object {
+		{ "key1", "value1" },
+		{ "key2", false },
+		{ "key3", Json::array { 1, 2, 3 } },
 	};
+	std::string json_str = my_json.dump();
 
-	resPrintf(response, "%s", ret.dump().c_str());
+	resPrintf(response, "%s\n", my_json.dump().c_str());
 }
 
 static void factor(Request *request, Response *response) {
