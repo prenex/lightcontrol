@@ -1,7 +1,9 @@
-#include "wafer.h"
-#include "waferapi.h"
-#include <string.h>
+extern "C" { /* These are originally for C usage */
+	#include "wafer.h"
+	#include "waferapi.h"
+}
 
+#include <cstring>
 #include "json11.h"
 using json11::Json;
 
