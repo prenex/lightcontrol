@@ -36,7 +36,7 @@ endif
 EXT_OPTIONS=$(PTHREAD) $(DEBUG_OPT) $(PROCESSES_OPT) $(LOOP_OPT) $(MAX_CON_CONS_OPT) 
 
 AR=ar
-CFLAGS=-std=gnu99 -W -Wall -O2 -Wno-unused-parameter -g $(EXT_OPTIONS)
+CFLAGS=-std=c++11 -W -Wall -O2 -Wno-unused-parameter -g $(EXT_OPTIONS)
 _LIBWAFER_OBJ=wafer.o waferapi.o
 _LIBWAFER=libwafer.a
 MODULES=$(SERVER) lightcontrol
@@ -47,13 +47,13 @@ LIBWAFER = $(patsubst %,$(OBJDIR)/%,$(_LIBWAFER))
 all: $(MODULES)
 
 # rule to build modules
-%: $(SRCDIR)/%.c $(LIBWAFER)
+%: $(SRCDIR)/%.cpp $(LIBWAFER)
 	$(CC) $(CFLAGS) -o $@ $^ $(OPTIONS)
 
 $(LIBWAFER): $(LIBWAFER_OBJ)
 	$(AR) r $@ $^
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(OBJDIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJDIR):

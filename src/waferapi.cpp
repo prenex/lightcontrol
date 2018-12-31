@@ -49,7 +49,7 @@ long resPrintf(Response * response, const char *format, ...)
 	if (len > MAX_BUFFER_SIZE) {
 		/* buffer size was not enough */
 		free(buf);
-		buf = malloc(len + 1);
+		buf = (char*)malloc(len + 1);
 		if (buf == NULL) {
 			printf("Could not allocate memory.");
 			exit(EXIT_FAILURE);
@@ -317,7 +317,7 @@ bool routeRequest(Request * request, Response * response, const char *path,
 /*Internal stuff follows. Could change in future. Do not use */
 char *getBufferSpace()
 {
-	char *bufferSpace = malloc(MAX_BUFFER_SIZE * sizeof(char));
+	char *bufferSpace = (char*)malloc(MAX_BUFFER_SIZE * sizeof(char));
 	if (bufferSpace == NULL) {
 		fprintf(stderr, "Could not allocate memory.");
 		exit(EXIT_FAILURE);

@@ -41,10 +41,12 @@
 #define KWHT  "\x1B[37m"
 #define RESET	"\033[0m"
 
-/* Define boolean */
+/* Define boolean - if not c++ is the compiler */
+#ifndef __cplusplus
 typedef int bool;
 #define true 1
 #define false 0
+#endif
 
 #define SERVER_STRING "Server: wafer.chttpd/0.1.0\r\n"
 #define ToHex(Y) (Y>='0'&&Y<='9'?Y-'0':Y-'A'+10)
@@ -130,7 +132,9 @@ typedef struct {
 #define NEW(T,v) do { T * v =  malloc(sizeof(T)); } while (0)
 #define WAFER_STR(X) #X
 /* Globals */
-int default_port;
+#ifdef _DEFINE_PORT_VAR
+int default_port; /* ifdef-ed for c++ usage */
+#endif /* _DEFINE_PORT_VAR */
 
 /*Thread stuff!*/
 #ifdef WAFER_THREADS

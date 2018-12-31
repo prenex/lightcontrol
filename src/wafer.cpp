@@ -2,6 +2,7 @@
  * Please visit waferdotc.com for more information
  */
 
+#define _DEFINE_PORT_VAR 1 /* Needed to add to comply C++ rules as C code */
 #include "wafer.h"
 
 static inline bool on_conditition_terminate_string_change_state(bool conditition,
@@ -24,19 +25,19 @@ void new_fd_data(FdData * fd)
 {
 	fd->state = STATE_PRE_REQUEST;
 	LOG_ERROR_ON_NULL(fd->readBuffer =
-					  malloc((MAX_REQUEST_SIZE + 1) * SIZE_OF_CHAR),
+					  (char*)malloc((MAX_REQUEST_SIZE + 1) * SIZE_OF_CHAR),
 					  "Can't malloc " WAFER_STR(__LINE__));
 	LOG_ERROR_ON_NULL(fd->method =
-					  malloc((MAX_METHOD_SIZE + 1) * SIZE_OF_CHAR),
+					  (char*)malloc((MAX_METHOD_SIZE + 1) * SIZE_OF_CHAR),
 					  "Can't malloc " WAFER_STR(__LINE__));
 	LOG_ERROR_ON_NULL(fd->uri =
-					  malloc((MAX_REQUEST_SIZE + 1) * SIZE_OF_CHAR),
+					  (char*)malloc((MAX_REQUEST_SIZE + 1) * SIZE_OF_CHAR),
 					  " Can't malloc " WAFER_STR(__LINE__));
 	LOG_ERROR_ON_NULL(fd->ver =
-					  malloc((MAX_VER_SIZE + 1) * SIZE_OF_CHAR),
+					  (char*)malloc((MAX_VER_SIZE + 1) * SIZE_OF_CHAR),
 					  " Can't malloc " WAFER_STR(__LINE__));
 	LOG_ERROR_ON_NULL(fd->headers =
-					  malloc(MAX_HEADERS * sizeof(char *)),
+					  (char**)malloc(MAX_HEADERS * sizeof(char *)),
 					  " Can't malloc " WAFER_STR(__LINE__));
 	fd->readBufferIdx = 0;
 	fd->readBufferLen = 0;
@@ -336,7 +337,7 @@ int state_machine(FdData * fdDataList, int i, int nbytes, fd_set * pMaster)
 				if (idx == 0) {
 					if (clength > 0) {
 						fdDataList[i].state = STATE_CONTENT_DATA;
-						fdDataList[i].contentData = malloc(clength + 1);
+						fdDataList[i].contentData = (char*)malloc(clength + 1);
 					} else {
 						fdDataList[i].state = STATE_COMPLETE_READING;
 						fdDataList[i].contentDataIdx = 0;
@@ -368,7 +369,7 @@ int state_machine(FdData * fdDataList, int i, int nbytes, fd_set * pMaster)
 			} else {
 				if (idx == 0)
 					fdDataList[i].headers[fdDataList[i].headersIdx] =
-						malloc(MAX_BUFFER_SIZE * sizeof(char));
+						(char*)malloc(MAX_BUFFER_SIZE * sizeof(char));
 				if (idx < MAX_BUFFER_SIZE) {
 					fdDataList[i].headers[fdDataList[i].headersIdx][idx] =
 						fdDataList[i].readBuffer[j];
