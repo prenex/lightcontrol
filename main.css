@@ -23,14 +23,21 @@ h1.main_title {
 	display:inline-block;
 	cursor:pointer;
 	background-color: rgb(31, 31, 57);
-	vertical-align:middle;
 	padding: 10px;
+	vertical-align:middle;
 	text-align: center;
+}
+
+.categories .gridcell {
 	min-width: 30%; /* Because of my pale-moon browser */
 }
 
 .gridcell:hover {
 	background-color: rgb(41, 41, 67);
+}
+
+.centered {
+	text-align: center;
 }
 
 /* vim: set ts=4 noet */
