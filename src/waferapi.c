@@ -129,7 +129,7 @@ void serveFile(Request * request, Response * response, const char *filename,
 		STATIC_SEND(response->fd, "HTTP/1.0 200 OK\r\n");
 		STATIC_SEND(response->fd, SERVER_STRING);
 
-		resPrintf(response, "Cache-Control: private\r\n", type);		//avoid unnecessary downloads
+		resPrintf(response, "Cache-Control: private\r\n");		//avoid unnecessary downloads
 		resPrintf(response, "Content-Type: %s\r\n", type);
 		resPrintf(response, "Content-Length: %d\r\n", stat_buf.st_size);
 
