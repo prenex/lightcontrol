@@ -940,4 +940,4 @@ int main(void)
 	return 0;
 }
 
-/* vim: set ts=4 noet */
+/* vim: set ts=4 noet : */

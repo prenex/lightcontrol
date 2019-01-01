@@ -90,3 +90,4 @@ clean:
 distclean:
 	rm -f $(LIBWAFER) $(LIBWAFER_OBJ) $(MODULES)
 
+# vim: set ts=4 noet :

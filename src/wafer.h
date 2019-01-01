@@ -185,4 +185,4 @@ void server(Request * request, Response * response);
 
 #endif							/* WAFER_H_ */
 
-/* vim: set ts=4 noet */
+/* vim: set ts=4 noet : */

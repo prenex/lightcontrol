@@ -98,4 +98,4 @@ static void REST_categories(Request *request, Response *response) {
 	resPrintf(response, "%s\n", my_json.dump().c_str());
 }
 
-/* vim: set ts=4 noet */
+/* vim: set ts=4 noet : */

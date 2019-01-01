@@ -230,3 +230,5 @@ protected:
 };
 
 } // namespace json11
+
+/* vim: set ts=4 noet : */

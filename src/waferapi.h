@@ -55,4 +55,4 @@ long resPuts(Response * response, const char *buffer);
 #define API_FLAGS_FORM_ONLY_ON_NULL API_FLAGS_DONT_SET_HEADER_BEFORE_SENDING*2
 #endif
 
-/* vim: set ts=4 noet */
+/* vim: set ts=4 noet : */

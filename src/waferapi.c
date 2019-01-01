@@ -392,4 +392,4 @@ ssize_t writeLongString(int client, const char *longString, size_t len)
 	return sent;
 }
 
-/* vim: set ts=4 noet */
+/* vim: set ts=4 noet : */
