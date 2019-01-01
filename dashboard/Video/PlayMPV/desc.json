@@ -1,0 +1,9 @@
+{"desc": {
+	"Name": "Play URL with MPV",
+	"icon": "video_player.png",
+	"Params": [
+		{"URL": "string"},
+		{"Force": "bool"}
+	]
+},
+"_vim_": { "modeline": "/* vim: set ft=json noet ts=4 sw=4 : */" }}

@@ -1,0 +1,6 @@
+{"desc": {
+	"Name": "Stop any MPV playback",
+	"Params": [
+	]
+},
+"_vim_": { "modeline": "/* vim: set ft=json noet ts=4 sw=4 : */" }}
