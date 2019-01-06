@@ -7,6 +7,8 @@ extern "C" { /* These are originally for C usage */
 #include "json11.h"
 using json11::Json;
 
+#include "DashData.h"
+
 /* Pages */
 static void index_html(Request *request, Response *response);
 static void main_css(Request *request, Response *response);
@@ -20,9 +22,25 @@ static void favicon_ico(Request *request, Response *response);
 static void game_controller_png(Request *request, Response *response);
 static void download_cloud_computing_png(Request *request, Response *response);
 
+/* Dashboard database location */
+static const std::string dashPath = "./dashboard/";
+
+/* Dashboard database cache */
+static DashData dashCache;
+
+bool shouldInit(DashData &dd) {
+	// TODO: Maybe implement some timer to automatically reinitialize?
+	return !dd.inited;
+}
+
 /* TODO: this becomes a long row of ifs even if one succeeds - some should be maybe put in else clauses for speed if needed. */
 void server(Request *request, Response *response) {
 	printf("%s %s \n", request->method, request->reqStr);
+
+	// Init dashboard if necessary
+	if(shouldInit(dashCache)) {
+		dashCache = DashData(dashPath);
+	}
 
 	/* Rem.: ifs are here to make the runtime faster a bit */
 	/* Pages */
