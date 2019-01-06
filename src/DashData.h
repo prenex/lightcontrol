@@ -7,6 +7,9 @@
 #include "json11.h"
 using json11::Json;
 
+static const std::string CUR_DIR = ".";
+static const std::string PAR_DIR = "..";
+
 struct DashOperation {
 	Json descriptor;
 	std::string path;
@@ -31,7 +34,11 @@ struct DashData {
 		if ((dir = opendir(dashPath.c_str())) != NULL) {
 			/* print all the files and directories within directory */
 			while ((ent = readdir (dir)) != NULL) {
-				printf("- %s\n", ent->d_name);
+				if((ent->d_type == DT_DIR)
+					&& (CUR_DIR != ent->d_name)
+					&& (PAR_DIR != ent->d_name)) {
+					printf("- %s\n", ent->d_name);
+				}
 			}
 			closedir(dir);
 		} else {
