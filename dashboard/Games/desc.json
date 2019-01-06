@@ -1,6 +1,6 @@
 {"desc": {
-	"Name": "Stop any MPV playback",
-	"icon": "stop.png",
+	"Name": "Games",
+	"icon": "game_controller.png",
 	"Params": [
 	]
 },

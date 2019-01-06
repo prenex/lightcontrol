@@ -36,11 +36,11 @@ void server(Request *request, Response *response) {
 
 	/* Images (I just generate these with vim from ls *.png) */
 	// TODO: maybe do some generic handler for cases when the file has *.png in it!
-	routeRequest(request, response, "/video_player.png", video_player_png);
-	routeRequest(request, response, "/joystick.png", joystick_png);
-	routeRequest(request, response, "/info.png", info_png);
-	routeRequest(request, response, "/game_controller.png", game_controller_png);
-	routeRequest(request, response, "/download_cloud_computing.png", download_cloud_computing_png);
+	routeRequest(request, response, "/img/video_player.png", video_player_png);
+	routeRequest(request, response, "/img/joystick.png", joystick_png);
+	routeRequest(request, response, "/img/info.png", info_png);
+	routeRequest(request, response, "/img/game_controller.png", game_controller_png);
+	routeRequest(request, response, "/img/download_cloud_computing.png", download_cloud_computing_png);
 	routeRequest(request, response, "", index_html);
 	}}}}
 }
@@ -49,22 +49,22 @@ void server(Request *request, Response *response) {
 /* -------------------------------------- */
 
 static void video_player_png(Request *request, Response *response) {
-	serveFile(request, response, "video_player.png", NULL, "image/png");
+	serveFile(request, response, "img/video_player.png", NULL, "image/png");
 }
 static void joystick_png(Request *request, Response *response) {
-	serveFile(request, response, "joystick.png", NULL, "image/png");
+	serveFile(request, response, "img/joystick.png", NULL, "image/png");
 }
 static void info_png(Request *request, Response *response) {
-	serveFile(request, response, "info.png", NULL, "image/png");
+	serveFile(request, response, "img/info.png", NULL, "image/png");
 }
 static void favicon_ico(Request *request, Response *response) {
-	serveFile(request, response, "favicon.ico", NULL, "image/x-icon");
+	serveFile(request, response, "img/favicon.ico", NULL, "image/x-icon");
 }
 static void game_controller_png(Request *request, Response *response) {
-	serveFile(request, response, "game_controller.png", NULL, "image/png");
+	serveFile(request, response, "img/game_controller.png", NULL, "image/png");
 }
 static void download_cloud_computing_png(Request *request, Response *response) {
-	serveFile(request, response, "download_cloud_computing.png", NULL, "image/png");
+	serveFile(request, response, "img/download_cloud_computing.png", NULL, "image/png");
 }
 
 /* Pages */

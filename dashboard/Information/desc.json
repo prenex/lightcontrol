@@ -1,6 +1,6 @@
 {"desc": {
-	"Name": "Stop any MPV playback",
-	"icon": "stop.png",
+	"Name": "Sys info",
+	"icon": "info.png",
 	"Params": [
 	]
 },
